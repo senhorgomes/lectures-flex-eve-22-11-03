@@ -7,6 +7,7 @@ function PizzaMaker() {
     const addNewIngredient = () => {
         //Grab the first set of ingredients, and add the new on in front
         setListOfIngredients((prev) => [...prev, individualIngredient]);
+        //Reset our input field to blank
         setIndividualIngredient("")
     }
     const pizzaOrder = {
@@ -19,7 +20,9 @@ function PizzaMaker() {
     return (
         <div>
             <h2>Welcome to Panago How can we help you?</h2>
-            <input value={individualIngredient} onChange={(event) => { setIndividualIngredient(event.target.value) }} />
+            {/* The onChange event will update individualIngredient by using the setter individualIngredient */}
+            <input value={individualIngredient} onChange={(event) => { individualIngredient(event.target.value) }} />
+            {/* Upon clicking, we will trigger our function */}
             <button onClick={addNewIngredient}>Add new ingredient</button>
             <PizzaOven
                 pizzaOrder={pizzaOrder}
